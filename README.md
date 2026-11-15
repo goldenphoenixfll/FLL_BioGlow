@@ -10,14 +10,14 @@ The team robot is configured as follows:
 
 | Port | Device | Direction |
 | --- | --- | --- |
-| A | Left drive motor | Counterclockwise |
+| C | Left drive motor | Counterclockwise |
 | E | Right drive motor | Clockwise |
-| B | Left attachment motor | Counterclockwise |
-| F | Front attachment motor | Clockwise |
-| C | Left color sensor | - |
-| D | Right color sensor | - |
+| D | Left attachment motor | Clockwise |
+| F | Front attachment motor | Counterclockwise |
+| A | Left color sensor | - |
+| B | Right color sensor | - |
 
-The drive base uses a 62.4 mm wheel diameter and a 130 mm axle track. If the
+The drive base uses a 62 mm wheel diameter and a 135 mm axle track. If the
 physical wiring changes, update the matching port or direction in
 `robot.py` and `demorobot.py`.
 
@@ -28,8 +28,11 @@ physical wiring changes, update the matching port or direction in
 - `main.py`: Entry point. Displays a hub menu, runs the selected program, and
   monitors the Bluetooth button for an emergency stop.
 - `runs.py`: Registry of programs shown in the menu.
-- `run1.py`: Forward/backward movement and left/right square tests.
-- `run2.py`: Attachment motor and color sensor check.
+- `run1.py`: Travels to the vines and returns through the field.
+- `run2.py`: Collects and pushes the exploding seeds.
+- `run3.py`: Moves the back attachment and returns to base.
+- `run4.py`: Lifts the vine and returns from the mission area.
+- `run5.py`: Collects the keystone species.
 - `demorobot.py`: Hardware setup used by the standalone base test.
 - `spike_prime_base_test.py`: Runs the base movement test directly without the
   menu system.
@@ -56,7 +59,9 @@ With the hub powered on and connected over Bluetooth, run from this directory:
 ```
 
 The command uploads `main.py` and its imported modules, then starts the hub
-menu. Select a run with the hub buttons.
+menu. Select a run with the hub buttons. The selected run number is shown on
+the hub display. Press the hub Bluetooth button during a run to stop the robot;
+the hub light turns red. A normally completed run turns the light green.
 
 To upload the standalone movement test instead:
 
@@ -68,11 +73,11 @@ Keep the robot on a clear surface before running movement tests.
 
 ## Adding A Run
 
-Create a new module such as `run3.py` with the same async function shape as
+Create a new module such as `run6.py` with the same async function shape as
 the existing runs:
 
 ```python
-async def run3(
+async def run6(
     hub,
     robot,
     left_motor,

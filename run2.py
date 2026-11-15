@@ -1,11 +1,6 @@
-"""Attachment motor and color sensor check."""
+"""Mission run 2: collect and push the exploding seeds."""
 
 from pybricks.parameters import Stop
-from pybricks.tools import wait
-
-
-ATTACHMENT_SPEED_DEG_S = 300
-ATTACHMENT_ANGLE_DEG = 90
 
 
 async def run2(
@@ -16,34 +11,19 @@ async def run2(
     attachment_motor_left,
     attachment_motor_front,
 ):
-    """Move both attachments and report readings from both color sensors."""
-    from robot import left_color_sensor, right_color_sensor
+    """Run the exploding-seeds mission using the shared robot hardware."""
+    del hub, left_motor, right_motor, attachment_motor_left
 
-    print("Run 2: attachment and sensor check")
-    await hub.speaker.beep(700, 100)
-
-    await attachment_motor_left.run_angle(
-        ATTACHMENT_SPEED_DEG_S,
-        ATTACHMENT_ANGLE_DEG,
-        then=Stop.HOLD,
-    )
-    await attachment_motor_left.run_angle(
-        ATTACHMENT_SPEED_DEG_S,
-        -ATTACHMENT_ANGLE_DEG,
-        then=Stop.HOLD,
-    )
-    await attachment_motor_front.run_angle(
-        ATTACHMENT_SPEED_DEG_S,
-        ATTACHMENT_ANGLE_DEG,
-        then=Stop.HOLD,
-    )
-    await attachment_motor_front.run_angle(
-        ATTACHMENT_SPEED_DEG_S,
-        -ATTACHMENT_ANGLE_DEG,
-        then=Stop.HOLD,
-    )
-
-    print("Left color:", left_color_sensor.color())
-    print("Right color:", right_color_sensor.color())
-    await wait(500)
-    print("Run 2 completed.")
+    robot.use_gyro(True)
+    robot.straight(50, then=Stop.HOLD)
+    robot.turn(45, then=Stop.HOLD)
+    robot.straight(440, then=Stop.HOLD)
+    attachment_motor_front.control.limits(acceleration=5000)
+    attachment_motor_front.run_angle(1050, -300, then=Stop.HOLD)
+    robot.settings(straight_speed=1050)
+    robot.straight(-450, then=Stop.HOLD)
+    robot.turn(60, then=Stop.HOLD)
+    robot.settings(straight_speed=200)
+    robot.use_gyro(False)
+    robot.straight(650, then=Stop.HOLD)
+    robot.straight(-800, then=Stop.HOLD)

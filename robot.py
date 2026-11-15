@@ -6,8 +6,8 @@ from pybricks.pupdevices import ColorSensor, Motor
 from pybricks.robotics import DriveBase
 
 
-WHEEL_DIAMETER_MM = 62.4
-AXLE_TRACK_MM = 130
+WHEEL_DIAMETER_MM = 62
+AXLE_TRACK_MM = 135
 
 STRAIGHT_SPEED_MM_S = 250
 STRAIGHT_ACCEL_MM_S2 = 500
@@ -17,7 +17,7 @@ TURN_ACCEL_DEG_S2 = 240
 
 hub = PrimeHub()
 
-left_motor = Motor(Port.A, Direction.COUNTERCLOCKWISE)
+left_motor = Motor(Port.C, Direction.COUNTERCLOCKWISE)
 right_motor = Motor(Port.E, Direction.CLOCKWISE)
 robot = DriveBase(
     left_motor,
@@ -33,7 +33,7 @@ robot.settings(
 )
 robot.use_gyro(True)
 
-attachment_motor_left = Motor(Port.B, Direction.COUNTERCLOCKWISE)
-attachment_motor_front = Motor(Port.F, Direction.CLOCKWISE)
-left_color_sensor = ColorSensor(Port.C)
-right_color_sensor = ColorSensor(Port.D)
+attachment_motor_left = Motor(Port.D, Direction.CLOCKWISE)
+attachment_motor_front = Motor(Port.F, Direction.COUNTERCLOCKWISE)
+left_color_sensor = ColorSensor(Port.A)
+right_color_sensor = ColorSensor(Port.B)
