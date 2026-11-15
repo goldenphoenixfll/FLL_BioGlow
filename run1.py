@@ -1,7 +1,7 @@
 """Mission run 1: travel to the vines and return through the field."""
 
 
-async def run1(
+def run1(
     hub,
     robot,
     left_motor,
@@ -10,7 +10,6 @@ async def run1(
     attachment_motor_front,
 ):
     """Run the vine mission using the shared robot hardware."""
-    del hub, left_motor, right_motor, attachment_motor_left
 
     robot.use_gyro(True)
     robot.straight(720)

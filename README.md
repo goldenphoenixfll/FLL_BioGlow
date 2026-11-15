@@ -26,7 +26,7 @@ physical wiring changes, update the matching port or direction in
 - `robot.py`: Shared hub, drive motors, attachment motors, color sensors, and
   `DriveBase` configuration used by the menu runs.
 - `main.py`: Entry point. Displays a hub menu, runs the selected program, and
-  monitors the Bluetooth button for an emergency stop.
+  uses the hub Bluetooth button as the built-in emergency stop.
 - `runs.py`: Registry of programs shown in the menu.
 - `run1.py`: Travels to the vines and returns through the field.
 - `run2.py`: Collects and pushes the exploding seeds.
@@ -60,8 +60,8 @@ With the hub powered on and connected over Bluetooth, run from this directory:
 
 The command uploads `main.py` and its imported modules, then starts the hub
 menu. Select a run with the hub buttons. The selected run number is shown on
-the hub display. Press the hub Bluetooth button during a run to stop the robot;
-the hub light turns red. A normally completed run turns the light green.
+the hub display. The hub Bluetooth button is configured as the built-in stop
+button. A normally completed run turns the light green.
 
 To upload the standalone movement test instead:
 
@@ -73,11 +73,11 @@ Keep the robot on a clear surface before running movement tests.
 
 ## Adding A Run
 
-Create a new module such as `run6.py` with the same async function shape as
+Create a new module such as `run6.py` with the same function shape as
 the existing runs:
 
 ```python
-async def run6(
+def run6(
     hub,
     robot,
     left_motor,

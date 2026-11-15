@@ -3,7 +3,7 @@
 from pybricks.parameters import Stop
 
 
-async def run5(
+def run5(
     hub,
     robot,
     left_motor,
@@ -12,7 +12,6 @@ async def run5(
     attachment_motor_front,
 ):
     """Run the keystone-species mission using the shared robot hardware."""
-    del hub, left_motor, right_motor, attachment_motor_front
 
     robot.use_gyro(True)
     robot.settings(straight_speed=150)

@@ -1,7 +1,7 @@
 """Mission run 3: move the back attachment and return to base."""
 
 
-async def run3(
+def run3(
     hub,
     robot,
     left_motor,
@@ -10,7 +10,6 @@ async def run3(
     attachment_motor_front,
 ):
     """Run the mission formerly exported from the SPIKE block editor."""
-    del hub, left_motor, right_motor, attachment_motor_front
 
     robot.use_gyro(True)
     robot.straight(700)
