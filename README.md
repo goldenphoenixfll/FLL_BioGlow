@@ -44,7 +44,7 @@ Create and activate the Python 3.14 virtual environment:
 ```bash
 python3.14 -m venv .venv
 source .venv/bin/activate
-python -m pip install pybricks pybricksdev
+python -m pip install -r requirements.txt
 ```
 
 The `pybricks` package supplies local API stubs. Robot programs execute on the
